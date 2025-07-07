@@ -16,8 +16,10 @@
           modules = [
             {
               config.vim = {
-                # Enable custom theming options
-                theme.enable = true;
+                theme = {
+                  enable = true;
+                  name = "dracula";
+                };
 
                 # Enable Treesitter
                 treesitter.enable = true;
