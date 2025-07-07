@@ -16,6 +16,15 @@
           modules = [
             {
               config.vim = {
+                options = {
+                  autoindent = true;
+                  mouse = "";
+                  shiftwidth = 2;
+                  signcolumn = "yes";
+                  tabstop = 2;
+                  termguicolors = true;
+                };
+
                 theme = {
                   enable = true;
                   name = "dracula";
