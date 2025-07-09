@@ -106,6 +106,20 @@
                     vim.cmd.colorscheme("monokai-pro")
                   '';
                 };
+                persistence = {
+                  package = pkgs.vimPlugins.persistence-nvim;
+                  setup = ''
+                    require("persistence").setup()
+
+                    vim.api.nvim_create_autocmd("VimEnter", {
+                      callback = function()
+                        if vim.fn.argc() == 0 then
+                          require("persistence").load()
+                        end
+                      end,
+                    })
+                  '';
+                };
               };
             })
           ];
