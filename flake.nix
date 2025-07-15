@@ -25,6 +25,12 @@
                   termguicolors = true;
                 };
 
+                theme = {
+                  enable = true;
+                  name = "rose-pine";
+                  style = "main";
+                };
+
                 mini.icons.enable = true;
                 visuals.nvim-web-devicons.enable = true;
 
@@ -81,31 +87,8 @@
                 ];
               };
             }
-            ({pkgs, ...}: let
-              monokai-pro = pkgs.vimUtils.buildVimPlugin {
-                pname = "monokai-pro.nvim";
-                version = "2024-07-08";
-                src = pkgs.fetchFromGitHub {
-                  owner = "loctvl842";
-                  repo = "monokai-pro.nvim";
-                  rev = "31bad737610ec211de086d373c73025f39de93cb";
-                  sha256 = "sha256-zYY2MZXAvKqdahu1UR8MV0QiW2g4blbiXQtk1OrsQsQ=";
-                };
-              };
-            in {
+            ({pkgs, ...}: {
               config.vim.extraPlugins = {
-                monokai-pro = {
-                  package = monokai-pro;
-                  setup = ''
-                    require("monokai-pro").setup({
-                      filter = "octagon",
-                      transparent_background = false,
-                      terminal_colors = true,
-                      devicons = true
-                    })
-                    vim.cmd.colorscheme("monokai-pro")
-                  '';
-                };
                 persistence = {
                   package = pkgs.vimPlugins.persistence-nvim;
                   setup = ''
