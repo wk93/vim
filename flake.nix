@@ -69,6 +69,10 @@
                     format.enable = true;
                     lsp.enable = true;
                   };
+                  tailwind = {
+                    enable = true;
+                    lsp.enable = true;
+                  };
                 };
 
                 formatter.conform-nvim = {
