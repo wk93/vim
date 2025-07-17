@@ -14,7 +14,11 @@
         (nvf.lib.neovimConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            {
+            ({
+              pkgs,
+              lib,
+              ...
+            }: {
               config.vim = {
                 options = {
                   autoindent = true;
@@ -57,6 +61,22 @@
 
                 treesitter.enable = true;
 
+                diagnostics = {
+                  enable = true;
+                  config = {
+                    signs.text = lib.generators.mkLuaInline ''
+                      {
+                        [vim.diagnostic.severity.ERROR] = " ";
+                        [vim.diagnostic.severity.WARN] = " ";
+                        [vim.diagnostic.severity.HINT] = "󰠠 ";
+                        [vim.diagnostic.severity.INFO] = " ";
+                      }
+                    '';
+                    virtual_lines = true;
+                    virtual_text = true;
+                  };
+                };
+
                 lsp = {
                   enable = true;
                   formatOnSave = true;
@@ -90,7 +110,7 @@
                   ripgrep
                 ];
               };
-            }
+            })
             ({pkgs, ...}: {
               config.vim.extraPlugins = {
                 persistence = {
