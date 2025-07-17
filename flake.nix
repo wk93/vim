@@ -93,6 +93,16 @@
                     enable = true;
                     lsp.enable = true;
                   };
+                  ts = {
+                    enable = true;
+                    extraDiagnostics.enable = true;
+                    format = {
+                      enable = true;
+                      type = "prettierd";
+                    };
+                    lsp.enable = true;
+                    treesitter.enable = true;
+                  };
                 };
 
                 formatter.conform-nvim = {
