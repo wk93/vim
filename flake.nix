@@ -105,6 +105,10 @@
                   };
                 };
 
+                autocomplete.blink-cmp = {
+                  enable = true;
+                };
+
                 formatter.conform-nvim = {
                   enable = true;
                 };
